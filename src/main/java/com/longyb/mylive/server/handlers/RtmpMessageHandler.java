@@ -62,6 +62,12 @@ public class RtmpMessageHandler extends SimpleChannelInboundHandler<RtmpMessage>
 		}
 	}
 
+	/**
+	 * 接收消息 同时往订阅者发布media及相关信息
+	 * @param ctx
+	 * @param msg
+	 * @throws Exception
+	 */
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, RtmpMessage msg) throws Exception {
 

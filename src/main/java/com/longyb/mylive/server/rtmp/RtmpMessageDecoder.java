@@ -25,6 +25,9 @@ import com.longyb.mylive.server.rtmp.messages.WindowAcknowledgementSize;
 import io.netty.buffer.ByteBuf;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * rtmp byte数据解码器
+ */
 @Slf4j
 public class RtmpMessageDecoder {
 

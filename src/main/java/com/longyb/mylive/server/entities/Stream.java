@@ -140,6 +140,10 @@ public class Stream {
 		return r;
 	}
 
+	/**
+	 * 保存flv文件
+	 * @param msg
+	 */
 	private void writeFlv(RtmpMediaMessage msg) {
 		if (flvout == null) {
 			log.error("no flv file existed for stream : {}", streamName);
@@ -232,6 +236,10 @@ public class Stream {
 
 	}
 
+	/**
+	 * 订阅该flv 视频
+	 * @param channel
+	 */
 	public synchronized void addHttpFlvSubscriber(Channel channel) {
 		httpFLvSubscribers.add(channel);
 		log.info("http flv subscriber : {} is added to stream :{}", channel, streamName);
@@ -257,6 +265,10 @@ public class Stream {
 
 	}
 
+	/**
+	 * 广播消息至所有订阅者
+	 * @param msg
+	 */
 	private synchronized void broadCastToSubscribers(RtmpMediaMessage msg) {
 		Iterator<Channel> iterator = subscribers.iterator();
 		while (iterator.hasNext()) {

@@ -12,6 +12,7 @@ public class MyLiveConfig {
 
 	int rtmpPort;
 	int httpFlvPort;
+	//是否保存flv文件
 	boolean saveFlvFile;
 	String saveFlVFilePath;
 	int handlerThreadPoolSize;
