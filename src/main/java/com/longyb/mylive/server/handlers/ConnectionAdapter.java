@@ -14,7 +14,6 @@ public class ConnectionAdapter extends ChannelInboundHandlerAdapter {
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 
 		log.info("channel active:" + ctx.channel().remoteAddress());
-		
 	}
 
 	@Override

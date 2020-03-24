@@ -4,10 +4,15 @@ import lombok.Data;
 
 @Data
 public class RtmpHeader {
+	/**
+	 * chunk stream ID（流通道Id）
+	 */
 	int csid;
 	int fmt;
 	int timestamp;
-
+	/**
+	 * Length(长度)：是指Message Payload（消息负载）即音视频等信息的数据的长度，3个字节
+	 */
 	int messageLength;
 	short messageTypeId;
 	int messageStreamId;

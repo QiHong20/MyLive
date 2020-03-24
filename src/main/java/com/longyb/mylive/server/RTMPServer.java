@@ -40,13 +40,20 @@ public class RTMPServer {
 		eventLoopGroup = new NioEventLoopGroup();
 
 		ServerBootstrap b = new ServerBootstrap();
+
+		//事件处理 (线程池)
 		DefaultEventExecutorGroup executor = new DefaultEventExecutorGroup(handlerThreadPoolSize);
 		b.group(eventLoopGroup).channel(NioServerSocketChannel.class)
 				.childHandler(new ChannelInitializer<SocketChannel>() {
 					@Override
 					public void initChannel(SocketChannel ch) throws Exception {
-						ch.pipeline().addLast(new ConnectionAdapter()).addLast(new HandShakeDecoder())
-								.addLast(new ChunkDecoder()).addLast(new ChunkEncoder())
+						ch.pipeline()
+								//
+								.addLast(new ConnectionAdapter())
+								//握手
+								.addLast(new HandShakeDecoder())
+								.addLast(new ChunkDecoder())
+								.addLast(new ChunkEncoder())
 								.addLast(executor, new RtmpMessageHandler(streamManager));
 					}
 				}).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true);
